@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ parent() }} | White Lion T-shirt de combat sport.{% endblock %}
+{% block keywords %}{{ parent() }} | Contact{% endblock %}
+{% block title %}{{ parent() }} | Contact{% endblock %}
+
+{% block body_class %}contact-page{% endblock %}
+
+{% block body %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4 fw-bold text-dark">Contactez-nous</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card shadow-sm border-0 rounded-3">
+                    <div class="card-body p-4 text-dark">
+                        {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                        <div class="mb-3">
+                            {{ form_label(form.lastName, 'Nom', {'label_attr': {'class': 'form-label text-dark'}}) }}
+                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control text-dark', 'placeholder': 'Votre nom complet'}}) }}
+                            {{ form_errors(form.lastName) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(form.email, 'Adresse email', {'label_attr': {'class': 'form-label text-dark'}}) }}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control text-dark', 'placeholder': 'exemple@email.com'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(form.subject, 'Sujet', {'label_attr': {'class': 'form-label text-dark'}}) }}
+                            {{ form_widget(form.subject, {'attr': {'class': 'form-control text-dark', 'placeholder': 'Sujet de votre message'}}) }}
+                            {{ form_errors(form.subject) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(form.message, 'Message', {'label_attr': {'class': 'form-label text-dark'}}) }}
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control text-dark', 'rows': '5', 'placeholder': 'Écrivez votre message ici...'}}) }}
+                            {{ form_errors(form.message) }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-outline-dark btn-lg rounded-pill" type="submit">
+                                <i class="bi bi-send-fill me-2"></i> Envoyer
+                            </button>
+                        </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

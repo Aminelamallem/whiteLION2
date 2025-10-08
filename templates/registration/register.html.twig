@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4 fw-bold">Créer un compte</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <div class="card-body p-4">
+                        {{ form_start(registrationForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.name, 'Prénom', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom'}}) }}
+                            {{ form_errors(registrationForm.name) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.lastName, 'Nom', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+                            {{ form_errors(registrationForm.lastName) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.email, 'Adresse email', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'exemple@email.com'}}) }}
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.address, 'Adresse', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control', 'placeholder': 'Votre adresse'}}) }}
+                            {{ form_errors(registrationForm.address) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.phoneNumber, 'Numéro de téléphone', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': '+33 6 12 34 56 78'}}) }}
+                            {{ form_errors(registrationForm.phoneNumber) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Votre mot de passe sécurisé'}}) }}
+                            {{ form_errors(registrationForm.plainPassword) }}
+                            <small class="text-muted">
+                                Minimum 12 caractères, avec majuscules, minuscules, chiffres et caractères spéciaux.
+                            </small>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                            {{ form_label(registrationForm.agreeTerms, 'J’accepte les conditions d’utilisation', {'label_attr': {'class': 'form-check-label'}}) }}
+                            {{ form_errors(registrationForm.agreeTerms) }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill">
+                                <i class="bi bi-person-plus-fill me-2"></i> S'inscrire
+                            </button>
+                        </div>
+
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

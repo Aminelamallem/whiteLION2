@@ -1,0 +1,30 @@
+<!-- Bouton logo -->
+<button class="btn btn-dark m-3 shadow p-1" type="button" data-bs-toggle="offcanvas" 
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+  <img src="{{ asset('assets/images/logoGreyLION.png') }}" alt="logo WhiteLion" height="50">
+</button>
+
+<!-- Sidebar -->
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+  
+  <div class="offcanvas-header border-bottom border-secondary">
+    <img src="{{ asset('assets/images/logoGreyLION.png') }}" alt="logo WhiteLion" height="70">
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+  </div>
+  
+  <div class="offcanvas-body d-flex flex-column">
+      <!-- Liens existants -->
+      <a class="btn btn-outline-light text-start mb-2" href="{{ path('app_home') }}">Home</a>
+      <a class="btn btn-outline-light text-start mb-2" href="{{ path('app_showAll_admin') }}">PRODUCT</a>
+      <a class="btn btn-outline-light text-start mb-2" href="{{ path('product_variant_list') }}">PRODUCT VARIANT</a>
+
+      <!-- CRUD USER -->
+      <hr class="border-secondary">
+      <a class="btn btn-outline-info text-start mb-2" href="{{ path('app_user_index') }}">📋 Liste Users</a>
+     
+      <a class="btn btn-outline-success text-start mb-2" href="{{ path('app_admin_order') }}">📋 Liste Commandes</a>
+
+      <!-- Déconnexion -->
+      <a class="btn btn-outline-danger text-start mt-auto mb-5" href="{{ path('app_home') }}">Deconnexion</a>
+  </div>
+</div>

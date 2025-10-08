@@ -1,0 +1,72 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Commande n°{{ order.id }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-5 text-center text-primary">
+        <i class="bi bi-receipt"></i> Détails de la commande n°{{ order.id }}
+    </h1>
+
+    {# ✅ Bloc infos commande #}
+    <div class="card mb-5 shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="bi bi-info-circle"></i> Informations générales</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Date :</strong> {{ order.orderAt|date('d/m/Y H:i') }}</p>
+                    <p><strong>Total :</strong> 
+                        <span class="badge bg-success fs-6">
+                            {{ order.totalPrice|number_format(2, ',', ' ') }} €
+                        </span>
+                    </p>
+                    <p><strong>Utilisateur :</strong> {{ order.user.email ?? order.user.id }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Adresse :</strong> {{ order.address }}</p>
+                    <p><strong>Code Postal :</strong> {{ order.zipCode }}</p>
+                    <p><strong>Pays :</strong> {{ order.country }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ✅ Bloc articles #}
+    <h3 class="mb-4 text-secondary"><i class="bi bi-box-seam"></i> Articles commandés</h3>
+    <div class="row">
+        {% for item in datas %}
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card shadow-sm w-100 border-0">
+                    {% if item.variant and item.variant.image %}
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="height: 250px;">
+                            <img src="{{ asset('uploads/images/' ~ item.variant.image) }}"
+                                 alt="Variante {{ item.variant.id }}"
+                                 class="img-fluid"
+                                 style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                        </div>
+                    {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center"
+                             style="height: 250px;">
+                            <span class="text-muted">Pas d'image</span>
+                        </div>
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <p class="mb-1"><strong>Couleur :</strong> {{ item.color }}</p>
+                        <p class="mb-1"><strong>Genre :</strong> {{ item.gender }}</p>
+                        <p class="mb-1"><strong>Taille :</strong> {{ item.size }}</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    Aucun article trouvé pour cette commande.
+                </div>
+            </div>
+        {% endfor %}
+            <a class="btn btn-outline-success text-start mb-2" href="{{ path('app_admin_order') }}">📋 Liste Commandes</a>
+    </div>
+</div>
+{% endblock %}

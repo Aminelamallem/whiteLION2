@@ -1,0 +1,215 @@
+/* ================= GLOBAL ================= */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: #EBEBEB;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 100px;
+}
+
+h2 {
+  text-align: center;
+  margin: 20px;
+}
+
+.color2 {
+  background-color: rgba(0, 0, 0, 0.599);
+}
+
+/* ----- NAVBAR & FOOTER ----- */
+#navbar {
+  position: fixed;
+  width: 100%;
+  top: 0px; 
+  transition: top 0.6s ease;
+  z-index: 9999;
+  border-bottom: 3px solid #000;
+}
+
+#navbar.show { 
+  top: -270px; 
+  transition: top 2.5s ease;
+}
+
+#footer {
+  border-top: 3px solid #000;
+}
+
+#logoutModal {
+  z-index: 9999 !important;
+}
+
+/* ================= HERO ================= */
+.section1home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 40px 20px;
+  border-bottom: 3px solid #000;
+}
+
+/* .section1home img {
+  max-width: 300px;
+  width: 70%;
+  height: auto;
+} */
+
+.text-hero {
+  max-width: 600px;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ================= SECTIONS ================= */
+.section2home {
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.599);
+}
+
+.section3home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #000000cf; 
+  height: 20%;
+  gap: 25px;
+  padding: 20px;
+}
+
+.sectionJs {
+  position: relative;
+  left: -350px;        
+  opacity: 0;          /* invisible au debut */
+  transition: all 0.8s ease; 
+}
+
+.section-vide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* ================= BOX ================= */
+.box {
+  width: 220px;
+  height: 180px;
+  border-radius: 20px;
+  background-color: #EBEBEB;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  margin: 15px;
+}
+
+.box:hover {
+  transform: translateY(-8px);
+}
+
+.box img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.logosmall3d {
+  width: 120px;
+  height: 120px;
+}
+
+/* ================= T-SHIRT 3D ================= */
+.new-collection-content {
+  gap: 2rem;
+}
+
+.tshirt-3d {
+  width: 20em; 
+  height: 30em;
+  transition: transform 0.3s;
+}
+
+.logo3d {
+  width: 15em; 
+  height: 20em;
+  transition: transform 0.3s;
+}
+
+.tshirt-3d:hover {
+  transform: scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+}
+
+.social-logo {
+  display: flex;
+  gap: 15px;
+}
+
+.mentions {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* ================= RESPONSIVE ================= */
+@media screen and (max-width: 1024px) {
+  .text-hero {
+    font-size: 18px;
+  }
+
+ 
+}
+
+@media screen and (max-width: 768px) {
+  .text-hero {
+    font-size: 16px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mentions {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+

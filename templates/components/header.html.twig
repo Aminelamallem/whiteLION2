@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg navbar-dark color2" id="navbar">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="{{ path('app_home') }}">
+      <img src="{{ asset('assets/images/logo.png') }}" alt="logo WhiteLion" height="70px">
+    </a>
+
+    <!-- Bouton burger -->
+    <button class="navbar-toggler border border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens du menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mx-5">
+        <li class="nav-item">
+          <a class="nav-link active text-white" href="{{ path('app_home') }}">Accueil</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ path('app_variant_list') }}">T-shirt</a>
+        </li>
+
+        <!-- Dropdown Genres -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="genderDropdown" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Genres
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="genderDropdown">
+            {% for gender in genders_global %}
+              <li>
+                <a class="dropdown-item" href="{{ path('app_gender_show', { id: gender.id }) }}">
+                  {{ gender.label }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{ path('app_contact') }}">Contact</a>
+        </li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_admin') }}">
+              <img src="{{ asset('assets/images/admin-with-cogwheels-svgrepo-com.svg') }}" alt="logo admin" height="25">
+            </a>
+          </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_USER') %}
+          <!-- Dropdown utilisateur -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ asset('assets/images/user-svgrepo-com.svg') }}" alt="logo user" height="25">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="userDropdown">
+              <li>
+                <a class="dropdown-item" href="{{ path('app_user_edit', {'id': app.user.id}) }}">
+                  Éditer 
+                  <img src="{{ asset('assets/images/edit-pencil-line-01-svgrepo-com.svg') }}" alt="logo edit" height="20">
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <!-- Déconnexion avec modal -->
+             <li>
+                <a class="dropdown-item" href="{{ path('app_user_commande') }}">
+                  Mes Commandes 
+                  <img src="{{ asset('assets/images/basket-svgrepo-com.svg') }}" alt="logo panier" height="20">
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                  Déconnexion 
+                  <img src="{{ asset('assets/images/logout-2-svgrepo-com.svg') }}" alt="logo logout" height="20">
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Panier -->
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_panier') }}">
+              <img src="{{ asset('assets/images/basket-svgrepo-com.svg') }}" alt="logo panier" height="25">
+              {% if panierCount > 0 %}
+                <span class="badge bg-danger">{{ panierCount }}</span>
+              {% endif %}
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_login') }}">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{{ path('app_register') }}">Inscription</a>
+          </li>
+        {% endif %}
+      </ul> 
+    </div>
+  </div>
+</nav>
+
+<!-- Modal Déconnexion -->
+<div class="modal fade" id="logoutModal" tabindex="5" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+  
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+        Voulez-vous vraiment vous déconnecter ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <a href="{{ path('app_logout') }}" class="btn btn-danger">Se déconnecter</a>
+      </div>
+    </div>
+  </div>
+</div>

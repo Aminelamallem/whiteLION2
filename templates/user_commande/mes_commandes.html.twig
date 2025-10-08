@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4 text-dark">📦 Mes commandes</h1>
+
+    <div class="row">
+        {% for order in orders %}
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4 border-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted">Commande #{{ order.id }}</h5>
+                        <p class="card-text small">
+                            <strong>Date :</strong> {{ order.orderAt|date('d/m/Y H:i') }}<br>
+                            <strong>Total :</strong> 
+                                <span class="badge bg-secondary">
+                                    {{ order.totalPrice|number_format(2, ',', ' ') }} €
+                                </span><br>
+                            <strong>Adresse :</strong> {{ order.address }}<br>
+                            <strong>Pays :</strong> {{ order.country }}
+                        </p>
+                        <a href="{{ path('app_user_commande_detail', {'id': order.id}) }}" 
+                           class="btn btn-sm btn-outline-dark w-100">
+                            Voir le détail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-light border text-center">
+                    Vous n'avez pas encore passé de commande.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p class="m-5 text-muted small">
+        Seules les commandes associées au compte actuellement connecté sont affichées sur cet espace. 
+        Cela permet de garantir que chaque utilisateur a accès uniquement à ses propres informations, 
+        en toute sécurité et confidentialité. Si vous ne trouvez pas une commande que vous pensez avoir passée, 
+        ou si vous rencontrez un souci quelconque dans l’affichage ou le suivi, merci de ne pas vous inquiéter et 
+        de contacter directement le support via le formulaire de contact prévu à cet effet. 
+        Notre équipe se chargera de vérifier votre demande et d’y répondre dans les meilleurs délais. 
+        Nous vous remercions de votre compréhension et de votre confiance.
+    </p>
+</div>
+{% endblock %}

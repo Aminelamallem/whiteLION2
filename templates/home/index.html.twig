@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}
+  {{ parent() }} | White Lion vetement de combat sport.
+{% endblock %}
+
+{% block keywords %}
+  {{ parent() }} | Accueil
+{% endblock %}
+
+{% block title %}
+  {{ parent() }} | Accueil
+{% endblock %}
+
+{% block body %}
+  <h1 class="text-center">WhiteLion</h1>
+
+  <!-- SECTION 1 - HERO -->
+  <section class="section1home">
+    <div>
+      <model-viewer 
+      src="{{ asset('assets/images/231099b54bbd7fa5367802355d17a218.glb') }}"
+      alt="T-shirt 3D WhiteLion"
+      auto-rotate
+      ar
+      class="logo3d">
+    </model-viewer>
+  </div>
+
+    <div class="text-hero">
+      <p>
+        White Lion, c’est plus qu’une marque : c’est un état d’esprit. Inspirée par la force de la jungle, 
+        notre collection est pensée pour ceux qui affrontent chaque jour comme un combat.
+      </p>
+      <p>
+        Nos vêtements sont simples, légers et conçus pour le sport et les sports de combat. 
+        Ici, pas de superflu : seulement l’essentiel, à des prix accessibles.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 - NEW COLLECTION -->
+  <section class="section2home">
+    {# new-collection d-flex flex-row justify-content-space-between align-items-center gab-4 flex-wrap m-5 #}
+
+    <div class="text-hero mt-5">
+      <p>
+        White Lion, c’est plus qu’une marque : c’est un état d’esprit. Inspirée par la force de la jungle, 
+        notre collection est pensée pour ceux qui affrontent chaque jour comme un combat.
+      </p>
+      <p>
+        Nos vêtements sont simples, légers et conçus pour le sport et les sports de combat. 
+        Ici, pas de superflu : seulement l’essentiel, à des prix accessibles.
+      </p>
+    </div>
+
+    <div class="new-collection">
+      <!-- T-shirt 3D 1 -->
+      <model-viewer 
+        src="{{ asset('assets/images/8691a35ec5312e1a74487c8e5c633b09 (1).glb') }}"
+        alt="T-shirt 3D WhiteLion"
+        auto-rotate
+        camera-controls
+        ar
+        class="tshirt-3d">
+      </model-viewer>
+    </div>
+  </section>
+
+  <!-- SECTION 3 - BOXES -->
+  <section class="section3home">
+    <div class="box">
+      <div>
+        <img src="{{ asset('assets/images/cutouts-a-bold-checkmark-png.webp') }}" alt="img">
+        <p>100% naturel</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div>
+        <model-viewer 
+          src="{{ asset('assets/images/231099b54bbd7fa5367802355d17a218.glb') }}"
+          alt="T-shirt 3D WhiteLion"
+          auto-rotate
+          camera-controls
+          ar
+          class="logosmall3d">
+        </model-viewer>
+        <p>100% chinois</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div>
+        <img src="{{ asset('assets/images/cutouts-a-bold-checkmark-png.webp') }}" alt="img">
+        <p>100% polyester</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CDN officiel pour model-viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+{% endblock %}

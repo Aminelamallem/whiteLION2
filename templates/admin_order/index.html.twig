@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block body %}
+<div class="container mt-4 bg-dark text-light p-4 rounded">
+    <h2 class="mb-4 text-center">📦 Liste des commandes</h2>
+
+    <div class="row">
+        {% for item in orders %}
+            <div class="col-md-4 d-flex">
+                <div class="card mb-4 shadow-sm w-100 bg-secondary text-light">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Commande #{{ item.id }}</h5>
+                        <p class="card-text mb-3">
+                            <span class="d-block"><strong>Date :</strong> {{ item.orderAt|date('d/m/Y H:i') }}</span>
+                            <span class="d-block"><strong>Total :</strong> {{ item.totalPrice|number_format(2, ',', ' ') }} €</span>
+                            <span class="d-block"><strong>Code Postal :</strong> {{ item.zipCode }}</span>
+                            <span class="d-block"><strong>Pays :</strong> {{ item.country }}</span>
+                        </p>
+                        <a href="{{ path('app_admin_order_detail', {'id': item.id}) }}" 
+                           class="btn btn-outline-warning btn-sm w-100">
+                            🔍 Voir la commande
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-dark text-center border border-warning">
+                    ⚠️ Aucune commande trouvée.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

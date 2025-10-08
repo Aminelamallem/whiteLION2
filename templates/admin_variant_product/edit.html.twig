@@ -1,0 +1,16 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+    
+    <a href="{{ path('product_variant_show', {'id': variant.id}) }}">Retour à la variante</a>
+    
+</div>
+{% endblock %}

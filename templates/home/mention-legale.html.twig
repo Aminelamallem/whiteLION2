@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{ parent() }} | White Lion vêtements de combat sport. {% endblock %}
+{% block keywords %}{{ parent() }} | Mentions légales{% endblock %}
+{% block title %}{{ parent() }} | Mentions légales{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+
+    <!-- Titre principal -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-dark">Mentions Légales</h1>
+        <p class="text-muted">Informations légales de White Lion</p>
+        <hr class="w-25 mx-auto">
+    </div>
+
+    <!-- Sections en cartes -->
+    <div class="row g-4">
+        
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h4 text-primary mb-3">Éditeur du site</h2>
+                    <p><strong>White Lion</strong></p>
+                    <p>Société XYZ au capital de 10 000€</p>
+                    <p>RCS Paris 123 456 789</p>
+                    <p>Siège social : 10 rue de la Force, 75000 Paris</p>
+                    <p>Email : <a href="mailto:contact@whitelion.com" class="text-decoration-none">contact@whitelion.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h4 text-primary mb-3">Directeur de la publication</h2>
+                    <p>Jean Dupont</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h4 text-primary mb-3">Hébergement</h2>
+                    <p>OVH</p>
+                    <p>2 rue Kellermann – 59100 Roubaix – France</p>
+                    <p>Téléphone : 09 72 10 10 07</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body">
+                    <h2 class="h4 text-primary mb-3">Propriété intellectuelle</h2>
+                    <p>
+                        L’ensemble du contenu du site (textes, images, logos, graphismes, etc.) est la
+                        propriété exclusive de <strong>White Lion</strong>, sauf mention contraire.  
+                        Toute reproduction, distribution ou modification sans autorisation préalable est interdite.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h2 class="h4 text-primary mb-3">Protection des données personnelles</h2>
+                    <p>
+                        Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez
+                        d’un droit d’accès, de rectification et de suppression de vos données.  
+                        Pour toute demande, merci de nous contacter à l’adresse : 
+                        <a href="mailto:contact@whitelion.com" class="text-decoration-none">contact@whitelion.com</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

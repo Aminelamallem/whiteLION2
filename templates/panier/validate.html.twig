@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{parent()}} | White Lion  T-shirth de combat sport. {% endblock %}
+{% block keywords %}{{parent()}} |  Panier{% endblock %}
+{% block title %}{{parent()}} | Panier validate{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4">Finaliser ma commande</h1>
+
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.address) }}
+            {{ form_widget(form.address, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.address) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.country) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.zipCode) }}
+            {{ form_widget(form.zipCode, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.zipCode) }}
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg rounded-pill px-4">
+            Valider la commande
+        </button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

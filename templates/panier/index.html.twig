@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{parent()}} | White Lion  T-shirth de combat sport. {% endblock %}
+{% block keywords %}{{parent()}} |  Panier{% endblock %}
+{% block title %}{{parent()}} | Panier{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4">Mon panier</h1>
+
+    {% if product is not empty %}
+        <div class="d-flex flex-column gap-3">
+            {% for item in product %}
+                <div class="d-flex flex-wrap align-items-center border rounded p-3">
+                    
+                    <!-- Image -->
+                    <div class="flex-shrink-0" style="width:120px;">
+                        <img src="{{ asset('uploads/images/' ~ item.variant.image) }}"
+                             alt="{{ item.variant.product.name }}"
+                             class="img-fluid rounded"
+                             style="max-height:80px; object-fit:cover;">
+                    </div>
+
+                    <!-- Infos produit -->
+                    <div class="flex-grow-1 ms-3 mt-2 mt-md-0" style="min-width:200px;">
+                        <h5 class="mb-1">{{ item.variant.product.name }}</h5>
+                        <p class="mb-1"><strong>Couleur :</strong> {{ item.color.label }}</p>
+                        <p class="mb-1"><strong>Taille :</strong> {{ item.size.label }}</p>
+                        <p class="mb-1"><strong>Genre :</strong> {{ item.gender.label }}</p>
+                        <p class="fw-bold mb-0">{{ item.price }} €</p>
+                    </div>
+
+                    <!-- Action -->
+                    <div class="ms-auto mt-3 mt-md-0 text-md-end">
+                        <a href="{{ path('app_panier_delete', { id: item.variant.id }) }}" 
+                           class="btn btn-sm btn-danger">
+                            Supprimer
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Résumé -->
+        <div class="mt-4 text-end">
+            <h4>Total : {{ total }} €</h4>
+            <p>Articles : {{ panierCount }}</p>
+            <a href="{{ path('app_cart_validate') }}" class="btn btn-dark">
+                Valider ma commande
+            </a>
+        </div>
+    {% else %}
+    <section class="m-5 d-flex justify-content-center align-items-center">
+        <img src="{{ asset('assets/images/cart-xmark-svgrepo-com.svg') }}" 
+        alt="logo cart" height="300">
+    </section>
+    <p class="text-center m-4">Votre panier est vide</p>
+
+    {% endif %}
+</div>
+{% endblock %}

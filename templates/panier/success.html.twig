@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{{parent()}} | White Lion  T-shirth de combat sport. {% endblock %}
+{% block keywords %}{{parent()}} |  Panier{% endblock %}
+{% block title %}{{parent()}} | Panier Succes{% endblock %}
+
+{% block body %}
+{# on peut acceder a cette pages que si il a payer #}
+
+<div class="container my-5 text-center">
+
+    <!-- Message de confirmation -->
+    <div class="mb-4">
+        <h1 class="fw-bold text-success">✅ Merci pour votre commande !</h1>
+        <p class="lead">Votre paiement a été validé avec succès {{app.user.name}}.</p>
+        <p>Vous recevrez votre commande dans les plus brefs delais.</p>
+<p>N’hésitez pas à nous contacter dans l’espace contact de la page en cas de moindre souci.</p>
+
+    </div>
+
+    <!-- Animation / modèle 3D -->
+    <div class="my-5 d-flex justify-content-center">
+        <model-viewer 
+            src="{{ asset('assets/images/231099b54bbd7fa5367802355d17a218.glb') }}"
+            alt="T-shirt 3D WhiteLion"
+            auto-rotate
+            camera-controls
+            ar
+            style="width: 400px; height: 400px;">
+        </model-viewer>
+    </div>
+
+    <!-- Boutons de navigation -->
+    <div class="mt-4">
+        <a href="{{ path('app_home') }}" class="btn btn-dark me-2">
+            Retour à l’accueil
+        </a>
+      
+    </div>
+
+</div>
+{% endblock %}
