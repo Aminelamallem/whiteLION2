@@ -23,9 +23,9 @@ document.addEventListener("turbo:load", () => {
     }
 
     if (currentScroll > lastScroll) {
-      nav.classList.add("show"); // descente -> afficher
+      nav.classList.add("hide"); // descente -> afficher
     } else {
-      nav.classList.remove("show"); // montée -> cacher
+      nav.classList.remove("hide"); // montée -> cacher
     }
     lastScroll = currentScroll;
   }, { passive: true });
